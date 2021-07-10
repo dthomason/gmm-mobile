@@ -80,7 +80,7 @@ const IndexExampleContainer = () => {
 
       <TouchableOpacity
         style={[Common.button.rounded, Gutters.regularBMargin]}
-        onPress={() => changeTheme({ darkMode: null })}
+        onPress={() => changeTheme({ theme: 'custom' })}
       >
         <Text style={Fonts.textRegular}>Auto</Text>
       </TouchableOpacity>
