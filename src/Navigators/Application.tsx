@@ -1,4 +1,5 @@
-import { IndexStartupContainer } from '@/Containers';
+import { IndexStartupContainer, SplashScreen } from '@/Containers';
+import { SignInContainer } from '@/Containers/SignIn/SignIn';
 import { navigationRef } from '@/Navigators/Root';
 import { StartupState } from '@/Store/Startup';
 import { useTheme } from '@/Theme';
@@ -20,6 +21,7 @@ const ApplicationNavigator = () => {
   const applicationIsLoading = useSelector(
     (state: { startup: StartupState }) => state.startup.loading,
   );
+  const isSignedIn = false;
 
   useEffect(() => {
     if (MainNavigator == null && !applicationIsLoading) {
@@ -42,7 +44,11 @@ const ApplicationNavigator = () => {
       <NavigationContainer theme={NavigationTheme} ref={navigationRef}>
         <StatusBar barStyle={darkMode ? 'light-content' : 'dark-content'} />
         <Stack.Navigator headerMode={'none'}>
-          <Stack.Screen name="Startup" component={IndexStartupContainer} />
+          {!isSignedIn ? (
+            <Stack.Screen name="SignIn" component={SignInContainer} />
+          ) : (
+            <Stack.Screen name="Startup" component={IndexStartupContainer} />
+          )}
           {isApplicationLoaded && MainNavigator != null && (
             <Stack.Screen
               name="Main"
