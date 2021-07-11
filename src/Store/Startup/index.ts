@@ -1,9 +1,10 @@
-import { buildSlice } from '@thecodingmachine/redux-toolkit-wrapper'
-import InitStartup from './Init'
+import { buildSlice } from '@thecodingmachine/redux-toolkit-wrapper';
 
-export default buildSlice('startup', [InitStartup]).reducer
+import InitStartup from './Init';
+
+export default buildSlice('startup', [InitStartup]).reducer;
 
 export interface StartupState {
-  loading: boolean
-  error: any
+  loading: boolean;
+  error: any;
 }

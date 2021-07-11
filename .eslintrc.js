@@ -83,6 +83,7 @@ module.exports = {
     'no-unused-vars': 'warn',
   },
   settings: {
+    'import/ignore': ['node_modules/react-native/index\\.js$'],
     'import/resolver': {
       'babel-module': {},
     },
@@ -91,4 +92,4 @@ module.exports = {
     ecmaVersion: 2021,
     sourceType: 'module',
   },
-}
+};

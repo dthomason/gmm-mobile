@@ -1,9 +1,9 @@
+import fetchOneUserService from '@/Services/User/FetchOne';
 import {
   buildAsyncState,
   buildAsyncReducers,
   buildAsyncActions,
-} from '@thecodingmachine/redux-toolkit-wrapper'
-import fetchOneUserService from '@/Services/User/FetchOne'
+} from '@thecodingmachine/redux-toolkit-wrapper';
 
 export default {
   initialState: buildAsyncState('fetchOne'),
@@ -12,4 +12,4 @@ export default {
     errorKey: 'fetchOne.error', // Optionally, if you scoped variables, you can use a key with dot notation
     loadingKey: 'fetchOne.loading',
   }),
-}
+};

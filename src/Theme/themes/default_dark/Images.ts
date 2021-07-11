@@ -8,5 +8,5 @@ export default function () {
       uri:
         'https://thecodingmachine.github.io/react-native-gmmmobile/img/TOM-small.png',
     },
-  }
+  };
 }

@@ -1,21 +1,21 @@
-import React, { useEffect } from 'react'
-import { ActivityIndicator, View, Text } from 'react-native'
-import { useTheme } from '@/Theme'
-import { useDispatch } from 'react-redux'
-import InitStartup from '@/Store/Startup/Init'
-import { useTranslation } from 'react-i18next'
-import { Brand } from '@/Components'
+import { Brand } from '@/Components';
+import InitStartup from '@/Store/Startup/Init';
+import { useTheme } from '@/Theme';
+import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { ActivityIndicator, View, Text } from 'react-native';
+import { useDispatch } from 'react-redux';
 
 const IndexStartupContainer = () => {
-  const { Layout, Gutters, Fonts } = useTheme()
+  const { Layout, Gutters, Fonts } = useTheme();
 
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(InitStartup.action())
-  }, [dispatch])
+    dispatch(InitStartup.action());
+  }, [dispatch]);
 
   return (
     <View style={[Layout.fill, Layout.colCenter]}>
@@ -23,7 +23,7 @@ const IndexStartupContainer = () => {
       <ActivityIndicator size={'large'} style={[Gutters.largeVMargin]} />
       <Text style={Fonts.textCenter}>{t('welcome')}</Text>
     </View>
-  )
-}
+  );
+};
 
-export default IndexStartupContainer
+export default IndexStartupContainer;
