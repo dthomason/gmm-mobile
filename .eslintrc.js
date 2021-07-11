@@ -12,9 +12,11 @@ module.exports = {
     'plugin:import/errors',
     'plugin:import/warnings',
   ],
-  plugins: ['jest'],
+  plugins: ['jest', 'prettier'],
   parser: '@typescript-eslint/parser',
   rules: {
+    'react-native/no-inline-styles': 'off',
+    'import/no-var-requires': 'off',
     'import/default': 'off',
     'import/first': 'error',
     'import/no-named-as-default': 'off',

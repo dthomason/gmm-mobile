@@ -1,26 +1,87 @@
+import { Center } from '@/Components/Center';
+import { AuthContext } from '@/Services/Auth/AuthProvider';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import React, { FC } from 'react';
-import { Text, View } from 'react-native';
+import React, { FC, useContext, useEffect, useState } from 'react';
+import { Button, Text } from 'react-native';
 
-interface RoutesProps {}
+import { AuthNavProps, AuthParamList } from './AuthParamList';
 
-function Login() {
+const Stack = createStackNavigator<AuthParamList>();
+
+export function Login({ navigation }: AuthNavProps<'Login'>) {
+  const { user } = useContext(AuthContext);
+
   return (
-    <View>
+    <Center>
       <Text>This is the Login</Text>
-    </View>
+      <Button
+        title="go to register"
+        onPress={() => {
+          navigation.navigate('Register');
+        }}
+      />
+    </Center>
   );
 }
 
-const Stack = createStackNavigator();
+export function Register({ navigation }: AuthNavProps<'Register'>) {
+  return (
+    <Center>
+      <Text>Register Now!!</Text>
+      <Button
+        title="go to Login"
+        onPress={() => {
+          navigation.navigate('Login');
+        }}
+      />
+    </Center>
+  );
+}
 
-export const Route: FC<RoutesProps> = ({}) => {
+interface RouteProps {}
+
+export const Route: FC<RouteProps> = () => {
+  const { user } = useContext(AuthContext);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    AsyncStorage.getItem('user')
+      .then(userString => {
+        if (userString) {
+          // decode it
+        } else {
+          setLoading(false);
+        }
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+  }, []);
+
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Login" component={Login} />
-      </Stack.Navigator>
+      {user ? (
+        <Text>You Exist</Text>
+      ) : (
+        <Stack.Navigator initialRouteName="Login">
+          <Stack.Screen
+            options={{
+              headerTitle: 'Sign In',
+            }}
+            name="Login"
+            component={Login}
+          />
+          <Stack.Screen
+            options={{
+              headerTitle: 'Sign Up',
+            }}
+            name="Register"
+            component={Register}
+          />
+        </Stack.Navigator>
+      )}
     </NavigationContainer>
   );
 };

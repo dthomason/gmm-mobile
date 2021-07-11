@@ -1,5 +1,5 @@
 export default {
-  welcome: 'Welcome to React Native GmmMobile by TheCodingMachine',
+  welcome: 'Welcome to the Mobile App Get More Math!',
   actions: {
     continue: 'Continue',
   },
