@@ -10,7 +10,7 @@ import {
   Easing,
   TouchableOpacity,
 } from 'react-native';
-import { TextInput, useTheme as usePaperTheme } from 'react-native-paper';
+import { TextInput } from 'react-native-paper';
 
 export const SignInContainer = () => {
   const [username, setUsername] = useState({ value: '', error: '' });
@@ -28,9 +28,9 @@ export const SignInContainer = () => {
     console.log('CLICKED LOGIN');
   };
 
-  const handleSubmit = () => {
-    console.log('Submitted');
-  };
+  // const handleSubmit = () => {
+  //   console.log('Submitted');
+  // };
 
   useEffect(() => {
     Animated.spring(scale, {
@@ -126,7 +126,7 @@ export const SignInContainer = () => {
         />
       </Animated.View>
       <Text style={Fonts.textCenter}>{t('welcome')}</Text>
-      <Animated.View style={[{ opacity: bottomButtonOpacity }]}>
+      <Animated.View style={[{ opacity: bottomButtonOpacity }, styles.effects]}>
         <TouchableOpacity onPress={handleSignIn} style={styles.button}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>SIGN IN</Text>
@@ -139,7 +139,7 @@ export const SignInContainer = () => {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: 'black',
+    backgroundColor: '#1976d2',
     height: 60,
     width: '85%',
     flexWrap: 'nowrap',
