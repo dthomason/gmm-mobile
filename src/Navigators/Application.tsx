@@ -1,4 +1,4 @@
-import { IndexStartupContainer, SplashScreen } from '@/Containers';
+import { IndexStartupContainer } from '@/Containers';
 import { SignInContainer } from '@/Containers/SignIn/SignIn';
 import { navigationRef } from '@/Navigators/Root';
 import { StartupState } from '@/Store/Startup';
